@@ -25,9 +25,8 @@ A YouTube series to understand React-Redux, NodeJS and Elasticsearch and build a
 	* Wrapping up the FlashCard application with elasticSearch.
 
 ## 5. Deploying your application on Cloud.
-
-Cheers,
 ```
+Cheers,
  - Aayush Bhardwaj
    (Hackavan)
  ```
