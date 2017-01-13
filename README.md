@@ -26,8 +26,8 @@ A YouTube series to understand React-Redux, NodeJS and Elasticsearch and build a
 
 ## 5. Deploying your application on Cloud.
 ```
-Cheers,
- - Aayush Bhardwaj
-   (Hackavan)
+														Cheers,
+														 - Aayush Bhardwaj
+														   (Hackavan)
  ```
 ---
