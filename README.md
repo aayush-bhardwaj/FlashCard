@@ -28,6 +28,6 @@ A YouTube series to understand React-Redux, NodeJS and Elasticsearch and build a
 
 
 ```
-Cheers,
+Cheers
 ```
 ---
