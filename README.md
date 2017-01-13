@@ -6,26 +6,29 @@ A YouTube series to understand React-Redux, NodeJS and Elasticsearch and build a
 
 ---
 
-1.  Understanding NodeJS.
+## 1.  Understanding NodeJS.
 	- What is NodeJS.
 	- Get the Project structure ready.
 
-2. Understanding React Library.
+## 2. Understanding React Library.
 	- What is ReactJS.
 	- Understanding React.
 	- Building a FlashCard application using React.
 
-3. Understanding Redux Architecture.
+## 3. Understanding Redux Architecture.
 	- What is Redux and why you need it?
 	- Build the same FlashCard application using Redux architecture.
 
-4. Understanding Elasticsearch.
+## 4. Understanding Elasticsearch.
 	- What is elasticsearch?
 	- How to integrate elasticsearch with NodeJS.
 	- Wrapping up the FlashCard application with elasticSearch.
 
-5. Deploying your application on Cloud.
+## 5. Deploying your application on Cloud.
 
 Cheers,
+```
 - Aayush Bhardwaj
   (Hackavan)
+ ```
+---
