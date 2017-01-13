@@ -71,3 +71,8 @@ And, boom the dependencies are installed in his machine, Cool!
 
 * Express is a web framework for Node.js.
 * Express builds upon Node and makes building Node application way easier.
+
+How to install express?
+```
+npm install express --save
+```
