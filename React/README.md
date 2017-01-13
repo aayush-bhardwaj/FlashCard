@@ -21,7 +21,12 @@ var server = http.createServer(function(req,res){
 
 server.listen(3000);
 ```
+How to download and install Node.js?
 
+[Node Website](https://nodejs.org/en/)
+or
+[Follow this Digitalocean guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
+) 
 ### What is [npm](https://www.npmjs.com/) ?
 
 * NPM is Node package manager, which is bundled with your Node installation.
