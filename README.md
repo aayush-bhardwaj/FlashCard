@@ -2,9 +2,11 @@
 
 A YouTube series to understand React-Redux, NodeJS and Elasticsearch and build a FlashCard application for a practical experience.
 
-Curriculam -
+> Curriculam -
 
-1. Understanding NodeJS.
+---
+
+1.  Understanding NodeJS.
 	- What is NodeJS.
 	- Get the Project structure ready.
 
