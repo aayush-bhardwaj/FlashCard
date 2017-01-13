@@ -25,7 +25,7 @@ server.listen(3000);
 ### What is [npm](https://www.npmjs.com/) ?
 
 * NPM is Node package manager, which is bundled with your Node installation.
-* Similar to PIP for Python it helps yu install and manage Node packages.
+* Similar to PIP for Python it helps you install and manage Node packages.
 
 How do we install the node packages using npm?
 
@@ -53,14 +53,16 @@ eg. npm install --save react
 npm install
 ```
 * And npm will take care of installing all those packages, GREAT!
-* Where does it save those modules we ust installed.
+* Where does it save those modules we just installed.
 	Ans: In a folder named <node_modules>.
 
 So, now if you have to share your application with anyone, or run it in the dev environment all you need to do is to share your files including package.json, and all one has to do is
 ```
 npm install
 ```
-And, all teh dependencies are installed in his machine, Cool!
+And, boom the dependencies are installed in his machine, Cool!
 
-### What is Express ?
+### What is [Express](http://expressjs.com/) ?
 
+* Express is a web framework for Node.js.
+* Express builds upon Node and makes building Node application way easier.
