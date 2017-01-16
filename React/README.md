@@ -171,3 +171,8 @@ What are those two files we created :
 	- webpack.config.js
 	- bundle.min.js
 ```
+
+```diff
++ this will be highlighted in green
+- this will be highlighted in red
+```
