@@ -164,7 +164,7 @@ Cool, we have our server up and ready.
 
 ![server_up](https://cloud.githubusercontent.com/assets/10152651/21982990/e984d5e2-dc14-11e6-806d-d9153f266dd7.png)
 
-## ReactJS/Redux, NodeJs and ElasticSearch - 4 - What is Webpack. 
+## ReactJS/Redux, NodeJs and ElasticSearch - 4 - Understanding and configuring  Webpack. 
 
 What are those two files we created :
 ```
