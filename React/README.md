@@ -167,6 +167,7 @@ Cool, we have our server up and ready.
 ## ReactJS/Redux, NodeJs and ElasticSearch - 4 - What is Webpack. 
 
 What are those two files we created :
+```
 	- webpack.config.js
 	- bundle.min.js
-
+```
