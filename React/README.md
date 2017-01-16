@@ -164,10 +164,92 @@ Cool, we have our server up and ready.
 
 ![server_up](https://cloud.githubusercontent.com/assets/10152651/21982990/e984d5e2-dc14-11e6-806d-d9153f266dd7.png)
 
-## ReactJS/Redux, NodeJs and ElasticSearch - 4 - Understanding and configuring  Webpack. 
+## ReactJS/Redux, NodeJs and ElasticSearch - 4 - Understanding and configuring Webpack and Babel. 
 
 What are those two files we created :
 ```
 	- webpack.config.js
 	- bundle.min.js
 ```
+
+### Babel :
+
+Babel is a Javascript compiler which helps us to write next generation javascript without worrying about it's compatibility with the older browsers.
+
+```
+/React$ npm install babel-core babel-loader babel-preset-es2015 babel-preset-react --save
+```
+
+### Webpack :
+
+Webpack is a module bundler which takes care of basically two things -
+
+1. Compiling all our JSX and JS code to work with React.
+2. Taking care of all our imports that our package needs, So, it bundles all our JS code to a single JS file which can be rendered to our view page .
+3. It also acts as a watcher. So, we don't need to restart our server after every change.
+
+```
+npm install webpack --save
+```
+
+So, as we installed babel and webpack locally, if we try to run babel from our terminal it doesn't recognise babel or webpack as a command .
+
+```
+/React$ babel
+The program 'babel' can be found in the following packages:
+ * babel-1.4.0
+ * openbabel
+Try: sudo apt-get install <selected package>
+```
+
+So, now go to file '/React/package.json' and edit the file to add :
+
+```
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "babel" : "babel",
+    "webpack" : "webpack"
+  },
+ ```
+ So, now we can use commands 'babel' and 'webpack' :
+ ```
+ /React$ npm run babel
+ /React$ npm run webpack
+ ```
+
+ Don't worry about them throwing errors presently, because we have not configured them.
+
+ Now , the last step is to configure the file 'webpack.config.js'
+
+```
+module.exports = {
+    entry : "./dev/app.js",
+    output :{
+        path : __dirname + "/src/js",
+        filename : "bundle.min.js"
+    },
+    module : {
+        loaders :[
+            {
+                test : /.jsx?$/,
+                exclude : /(node_modules)/,
+                loader : "babel-loader",
+                query :{
+                    presets : ["es2015" , "react"]
+                }
+            }
+        ]
+    },
+    watch:true
+}
+```
+All we are doing here is :
+
+* All our input development will occur inside '/dev/app.js'
+* When we compile them using Webpack it will create a output file '/src/js/bundle/min.js'
+* if we have any file 'JS' or 'JSX' compile it using babel-loader
+* exclude /node_modules whiling compilation
+* Allow us to use the latest JS6.0 standards and react code.
+
+Cool!
