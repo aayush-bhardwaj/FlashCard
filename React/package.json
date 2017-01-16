@@ -1,0 +1,20 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "YouTube tutorial for React-redux Node and ES",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aayush-bhardwaj/FlashCard/tree/master/React"
+  },
+  "author": "Aayush",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "webpack": "^1.14.0"
+  }
+}
