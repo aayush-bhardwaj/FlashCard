@@ -1,3 +1,5 @@
+## ReactJS/Redux, NodeJs and ElasticSearch - 2 - What is Node, NPM and express. 
+
 ## Node.js 
 ---
 
@@ -76,3 +78,86 @@ How to install express?
 ```
 npm install express --save
 ```
+
+## ReactJS/Redux, NodeJs and ElasticSearch - 3 - Get the project structure and server ready. 
+
+### Get the project structure ready :
+---
+
+Within your parent folder /React make a directory structure as follows :
+	
+-- /React
+	-- .gitignore
+	-- package.json
+	-- server.js
+	-- README.md
+	-- webpack.config.js
+	-- /node_modules
+	-- /dev
+		-- /js
+			-- /components
+		-- app.js
+		-- /public
+	-- src
+		-- /js
+			-- bundle.min.js
+		-- /views
+			-- index.pug
+
+### Now let's get the server up and running .
+
+Edit the server.js file -
+
+```
+var express = require('express');
+var app = express();
+
+app.use('/static', express.static(__dirname + '/dev/public'));
+app.set('view engine' ,'pug');
+app.set('views' , __dirname + '/src/views');
+
+app.get('*',function(req,res){
+	res.render('index');
+})
+
+app.listen(3000,function(){
+	console.log('listening on port 3000');
+})
+```
+
+### What is PUG?
+
+Pug is a template engine, formerly known as Jade.
+
+How to install
+```
+npm install pug --save
+```
+
+### So, now we have our server script ready but it's looking for a file named 'index' in the /views directory, So let's create a 'index.pug' file in /views.
+
+```
+doctype
+html
+    head
+        title Hackavan
+    body
+        div(id='app')
+        h1 Hello from Hackavan
+```
+
+Now go to the console and run your node server -
+
+but before we do that let's install 'nodemon' :
+
+Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development. 
+
+```
+npm install nodemon --save
+```
+So, run the command -
+```
+nodemon server
+```
+
+Cool, we have our server up and ready.
