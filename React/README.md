@@ -85,7 +85,7 @@ npm install express --save
 ---
 
 Within your parent folder /React make a directory structure as follows :
-	
+```
 -- /React
 	-- .gitignore
 	-- package.json
@@ -103,7 +103,7 @@ Within your parent folder /React make a directory structure as follows :
 			-- bundle.min.js
 		-- /views
 			-- index.pug
-
+```
 ### Now let's get the server up and running .
 
 Edit the server.js file -
@@ -163,3 +163,10 @@ nodemon server
 Cool, we have our server up and ready.
 
 ![server_up](https://cloud.githubusercontent.com/assets/10152651/21982990/e984d5e2-dc14-11e6-806d-d9153f266dd7.png)
+
+## ReactJS/Redux, NodeJs and ElasticSearch - 4 - What is Webpack. 
+
+What are those two files we created -
+	* webpack.config.js
+	* bundle.min.js
+
