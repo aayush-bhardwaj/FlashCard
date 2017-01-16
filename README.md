@@ -1,5 +1,7 @@
 # FlashCard
 
+## ReactJS/Redux, NodeJs and ElasticSearch - 1 - Curriculam. 
+
 A YouTube series to understand React-Redux, NodeJS and Elasticsearch and build a FlashCard application for a practical experience.
 
 ## Curriculam -
