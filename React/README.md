@@ -251,5 +251,6 @@ All we are doing here is :
 * if we have any file 'JS' or 'JSX' compile it using babel-loader
 * exclude /node_modules whiling compilation
 * Allow us to use the latest JS6.0 standards and react code.
+* Continue watching the code for any changes.
 
 Cool!
