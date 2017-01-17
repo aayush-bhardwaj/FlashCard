@@ -262,14 +262,14 @@ All we are doing here is :
 
 ### So, now let's try to create a a few components and  try to render "Hello from Hackavan" using components instead of wrting it in "index.pug" as before.
 
-1. Go To file 'index.pug' and delete the line
+Go To file 'index.pug' and delete the line
 ```
 h1 Hello from Hackavan
 ```
 
 Now, 'http://localhost:3000' is an empty page .
 
-2. Install packages 'react' and 'react-dom' using npm .
+Install packages 'react' and 'react-dom' using npm .
 ```
 npm install react react-dom --save
 ```
@@ -283,7 +283,7 @@ What is react-dom ?
 	* ReactDom.findDOMNode() very rarely used to get direct access to a DOM element.
 	* ReactDOm.renderToString() in your backend code.
 
-3. So, now open file '/React/dev/js/app.js' and add the code.
+So, now open file '/React/dev/js/app.js' and add the code.
 
 ```
 import React from "react"
@@ -294,16 +294,23 @@ render(
     ,document.getElementById("app")
 )
 ```
-4. Now last step is to open '/react/src/views.index.pug' and add the line
+
+NOTE : In react
+
+* Module imports are hoisted (internally moved to the beginning of the current scope).
+* We can import a function from a module using {}
+* in ReactDOM.render() needs two arguments - the component to render and the target HTML id.
+
+Now last step is to open '/react/src/views.index.pug' and add the line
 
 ```
 script(src="/static/bundle.min.js" type="text/javascript")
 ```
-5. Now run command
+ Now run command
 ```
 webpack
 ```
-6. And , in other terminal run command
+And , in other terminal run command
 ```
 nodemon server
 ```
@@ -311,3 +318,5 @@ nodemon server
 And , Go To 'http://localhost:3000' and voila!
 
 ![part2](https://cloud.githubusercontent.com/assets/10152651/22025645/47d1fe4c-dcf4-11e6-947e-a0ee911ea405.png)
+
+## ReactJS/Redux, NodeJs and ElasticSearch - 6 - Adding Components To React.
