@@ -309,3 +309,5 @@ nodemon server
 ```
 
 And , Go To 'http://localhost:3000' and voila!
+
+![part2](https://cloud.githubusercontent.com/assets/10152651/22025645/47d1fe4c-dcf4-11e6-947e-a0ee911ea405.png)
