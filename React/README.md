@@ -1,11 +1,11 @@
-## ReactJS/Redux, NodeJs and ElasticSearch - 2 - What is Node, NPM and express. 
+## ReactJS/Redux, NodeJs and ElasticSearch - 2 - What is Node, NPM and express.
 
-## Node.js 
+## Node.js
 ---
 
 ### What is [Node](https://nodejs.org/en/) ?
 
-* Node.js is a javascript runtime built on Chrome's V8 javascript engine. 
+* Node.js is a javascript runtime built on Chrome's V8 javascript engine.
 * Basically, Node gives you an environment to run your Javasscript code on 	  your machine, which was previously confined only to your browser.
 * So, whatever you used to do using PHP or Python can now be done in    javascript using node.js.
 * It helps you run your Web Server.
@@ -28,7 +28,7 @@ How to download and install Node.js?
 [Node Website](https://nodejs.org/en/)
 or
 [Follow this Digitalocean guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
-) 
+)
 ### What is [npm](https://www.npmjs.com/) ?
 
 * NPM is Node package manager, which is bundled with your Node installation.
@@ -49,10 +49,10 @@ How do we create the package.json file?
 ```
 npm init
 ```
-NPM walks you through a series of steps and it creates your package.json file in the application folder. 
+NPM walks you through a series of steps and it creates your package.json file in the application folder.
 
 ```
-npm install --save <package_name> 
+npm install --save <package_name>
 eg. npm install --save react
 ```
 * Or, we could do the other way round, create a list of all the dependencies you require for your application along with their version and save them in your package.json file and run.
@@ -79,7 +79,7 @@ How to install express?
 npm install express --save
 ```
 
-## ReactJS/Redux, NodeJs and ElasticSearch - 3 - Get the project structure and server ready. 
+## ReactJS/Redux, NodeJs and ElasticSearch - 3 - Get the project structure and server ready.
 
 ### Get the project structure ready :
 ---
@@ -112,7 +112,7 @@ Edit the server.js file -
 var express = require('express');
 var app = express();
 
-app.use('/static', express.static(__dirname + '/dev/public'));
+app.use('/static', express.static(__dirname + '/src/js'));
 app.set('view engine' ,'pug');
 app.set('views' , __dirname + '/src/views');
 
@@ -150,10 +150,12 @@ Now go to the console and run your node server -
 
 but before we do that let's install 'nodemon' :
 
-Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development. 
+Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development.
 
 ```
-npm install nodemon --save
+npm install -g nodemon
+
+NOTE : '-g' is to install a package globally.
 ```
 So, run the command -
 ```
@@ -164,7 +166,7 @@ Cool, we have our server up and ready.
 
 ![server_up](https://cloud.githubusercontent.com/assets/10152651/21982990/e984d5e2-dc14-11e6-806d-d9153f266dd7.png)
 
-## ReactJS/Redux, NodeJs and ElasticSearch - 4 - Understanding and configuring Webpack and Babel. 
+## ReactJS/Redux, NodeJs and ElasticSearch - 4 - Understanding and configuring Webpack and Babel.
 
 What are those two files we created :
 ```
@@ -177,7 +179,8 @@ What are those two files we created :
 Babel is a Javascript compiler which helps us to write next generation javascript without worrying about it's compatibility with the older browsers.
 
 ```
-/React$ npm install babel-core babel-loader babel-preset-es2015 babel-preset-react --save
+/React$ npm install babel babel-cli babel-core babel-loader babel-preset-es2015 babel-preset-react --save
+NOTE : Along with babel we also need to install a few other babel dependencies.
 ```
 
 ### Webpack :
@@ -192,10 +195,10 @@ Webpack is a module bundler which takes care of basically two things -
 npm install webpack --save
 ```
 
-So, as we installed babel and webpack locally, if we try to run babel from our terminal it doesn't recognise babel or webpack as a command .
+So, as we installed babel and webpack locally, if we try to run webpack from our terminal it doesn't recognise babel or webpack as a command .
 
 ```
-/React$ babel
+/React$ webpack
 The program 'babel' can be found in the following packages:
  * babel-1.4.0
  * openbabel
@@ -208,13 +211,11 @@ So, now go to file '/React/package.json' and edit the file to add :
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "babel" : "babel",
     "webpack" : "webpack"
   },
  ```
- So, now we can use commands 'babel' and 'webpack' :
+ So, now we can use commands 'webpack' :
  ```
- /React$ npm run babel
  /React$ npm run webpack
  ```
 
@@ -224,7 +225,7 @@ So, now go to file '/React/package.json' and edit the file to add :
 
 ```
 module.exports = {
-    entry : "./dev/app.js",
+    entry : "./dev/js/app.js",
     output :{
         path : __dirname + "/src/js",
         filename : "bundle.min.js"
@@ -232,9 +233,8 @@ module.exports = {
     module : {
         loaders :[
             {
-                test : /.jsx?$/,
                 exclude : /(node_modules)/,
-                loader : "babel-loader",
+                loader : "babel",
                 query :{
                     presets : ["es2015" , "react"]
                 }
@@ -247,10 +247,65 @@ module.exports = {
 All we are doing here is :
 
 * All our input development will occur inside '/dev/app.js'
-* When we compile them using Webpack it will create a output file '/src/js/bundle/min.js'
+* When we compile them using Webpack it will create a output file '/src/js/bundle.min.js'
 * if we have any file 'JS' or 'JSX' compile it using babel-loader
-* exclude /node_modules whiling compilation
+* exclude '/node_modules' while compilation
 * Allow us to use the latest JS6.0 standards and react code.
 * Continue watching the code for any changes.
 
-Cool!
+## ReactJS/Redux, NodeJs and ElasticSearch - 5 - Understanding React.
+
+* React is a Javascript library used for building User Interfaces, which is developed by Facebook.
+* Component Based - We can design simple views for each state in our application and then compose them to make complex UI's.
+* React can also render on the server using Node and power mobile apps using React Native.
+  Hence, React helps us make isomorphic apps, what i mean by isomorphic apps look into this blog [Universal javascript](https://medium.com/p/a8e9686cfb51/edit)
+
+### So, now let's try to create a a few components and  try to render "Hello from Hackavan" using components instead of wrting it in "index.pug" as before.
+
+1. Go To file 'index.pug' and delete the line
+```
+h1 Hello from Hackavan
+```
+
+Now, 'http://localhost:3000' is an empty page .
+
+2. Install packages 'react' and 'react-dom' using npm .
+```
+npm install react react-dom --save
+```
+What is react-dom ?
+
+* One liner "React package for working with DOM".
+* React-dom and React were split after v0.14, prior  to this version react-dom was a part of react.
+* 'React-dom' is the glue between react and the DOM.
+* Used basically for two purpose .
+	* ReactDOM.render() for mounting your React code.
+	* ReactDom.findDOMNode() very rarely used to get direct access to a DOM element.
+	* ReactDOm.renderToString() in your backend code.
+
+3. So, now open file '/React/dev/js/app.js' and add the code.
+
+```
+import React from "react"
+import {render} from "react-dom"
+
+render(
+    <h1>Hi from react hackavan</h1>
+    ,document.getElementById("app")
+)
+```
+4. Now last step is to open '/react/src/views.index.pug' and add the line
+
+```
+script(src="/static/bundle.min.js" type="text/javascript")
+```
+5. Now run command
+```
+webpack
+```
+6. And , in other terminal run command
+```
+nodemon server
+```
+
+And , Go To 'http://localhost:3000' and voila!
