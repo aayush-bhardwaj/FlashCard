@@ -486,3 +486,145 @@ render(
     ,document.getElementById("app")
 )
 ```
+
+Screenshot PART4
+
+Now , we need to save our FlashCards once we click on Submit button, Let's take care of that .
+
+So, let's create a List and save all our flashcards there .
+
+This is how my 'FlashCard.js' looks like now .
+```
+import React from "react"
+
+class FlashCard extends React.Component{
+    constructor (props) {
+        super(props);
+        this.state = {
+            value :"",
+            flashcards: []
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        var arr = this.state.flashcards;
+        arr.push(this.state.value);
+        this.setState({flashcards : arr})
+    }
+
+    render(){
+        return (
+            <div className='container'>
+                <div className='panel panel-default'>
+                    <div className='panel-heading'>Add FlashCard</div>
+                    <div className='panel-body'>
+                        <form onSubmit={this.handleSubmit}>
+                        <div className={'form-group '}>
+                            <label className='control-label'>FlashCard</label>
+                            <input type='text' className='form-control' ref='nameTextField' value={this.state.value} onChange={this.handleChange}/>                        
+
+                        </div>
+                        <button type='submit' className='btn btn-primary'>Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    );
+    }
+}
+
+export default FlashCard;
+```
+
+## ReactJS/Redux, NodeJs and ElasticSearch - 8 - Show FlashCards.
+
+Now , that we can create and save our Flashcards we also need to show them to the users.
+
+We will edit the file 'flashcard.js' and add a function.
+
+```
+showFlashCards(){                    
+        var namesList = this.state.flashcards.map(function(name){
+                return <li className="list-group-item">{name}</li>;
+                })
+
+        return  <ul className="list-group">{ namesList }</ul>  
+    }
+
+```
+
+So, the file 'flashcard.js' now looks like :
+
+```
+import React from "react"
+
+class FlashCard extends React.Component{
+    constructor (props) {
+        super(props);
+        this.state = {
+            value :"",
+            flashcards: []
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        var arr = this.state.flashcards;
+        arr.push(this.state.value);
+        this.setState({flashcards : arr})
+    }
+
+    showFlashCards(){                    
+        var namesList = this.state.flashcards.map(function(name){
+                return <li className="list-group-item">{name}</li>;
+                })
+
+        return  <ul className="list-group">{ namesList }</ul>  
+    }
+
+    render(){
+        return (
+            <div className='container'>
+                <div className='panel panel-default'>
+                    <div className='panel-heading'>Add FlashCard</div>
+                    <div className='panel-body'>
+                        <form onSubmit={this.handleSubmit}>
+                        <div className={'form-group '}>
+                            <label className='control-label'>FlashCard</label>
+                            <input type='text' className='form-control' ref='nameTextField' value={this.state.value} onChange={this.handleChange}/>                        
+
+                        </div>
+                        <button type='submit' className='btn btn-primary'>Submit</button>
+                        </form>
+                    </div>
+                </div>
+            <hr />
+            {this.showFlashCards()}
+            </div>
+    );
+    }
+}
+
+export default FlashCard;
+```
+
+So, now we have the Application ready using react and Node.js . Great.
+
+In the coming appliation we will create the same application using Readux architecture and also talk about what we were missing in the present code.
+
+Cheers!
