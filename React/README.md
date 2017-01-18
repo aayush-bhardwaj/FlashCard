@@ -428,3 +428,8 @@ included them in our render() function.
 NOTE: the ReactDom.render() has to return only one parent element, So we have enclosed all our code within a <div> tag.
 
 Your node server and webpack are already running , So , go to your browser .
+
+![part3](https://cloud.githubusercontent.com/assets/10152651/22050918/fcb91816-dd64-11e6-9870-ba28c486e656.png)
+
+
+Cool!
