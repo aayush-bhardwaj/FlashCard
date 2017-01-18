@@ -487,7 +487,7 @@ render(
 )
 ```
 
-Screenshot PART4
+![part4](https://cloud.githubusercontent.com/assets/10152651/22061931/40bd35d2-dd9d-11e6-9800-67e5b5daccc9.png)
 
 Now , we need to save our FlashCards once we click on Submit button, Let's take care of that .
 
@@ -622,6 +622,7 @@ class FlashCard extends React.Component{
 
 export default FlashCard;
 ```
+![part5](https://cloud.githubusercontent.com/assets/10152651/22062017/94526f78-dd9d-11e6-8fd2-6fc21c077fa7.png)
 
 So, now we have the Application ready using react and Node.js . Great.
 
