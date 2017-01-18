@@ -544,6 +544,20 @@ class FlashCard extends React.Component{
 export default FlashCard;
 ```
 
+NOTES :
+
+* [React Constructors](https://facebook.github.io/react/docs/react-component.html#constructor)
+* [Forms](https://facebook.github.io/react/docs/forms.html)
+* [preventDefault()](https://facebook.github.io/react/docs/handling-events.html) : In React we cannot return false to prevent default behaviour, we must call preventDefault().
+* [Method binding in constructors](http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/).
+
+Event handlers you pass as properties (like onChange or onClick) can come from many sources. They can be even passed from the non-React level by a property of the top-level component. In React.createClass React assumes that they come from your component and binds them automaticaly. But in ES2015 classes you have freedom. Under the hood they are called using the function invocation pattern.
+
+That means by default you can’t access properties, state and component methods like setState from event handlers. To do so, you need to bind them explicitly.
+
+The best place to bind your event handlers is your constructor.This way your event handler has its context bound to the component instance. You can access props and state and call setState or forceUpdate from such bound handler.
+
+
 ## ReactJS/Redux, NodeJs and ElasticSearch - 8 - Show FlashCards.
 
 Now , that we can create and save our Flashcards we also need to show them to the users.
