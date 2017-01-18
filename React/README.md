@@ -320,3 +320,111 @@ And , Go To 'http://localhost:3000' and voila!
 ![part2](https://cloud.githubusercontent.com/assets/10152651/22025645/47d1fe4c-dcf4-11e6-947e-a0ee911ea405.png)
 
 ## ReactJS/Redux, NodeJs and ElasticSearch - 6 - Adding Components To React.
+
+So, first let's take care of some bootstrapping .
+
+BOWER is a package manager of the web, It can manage components that contain HTML, CSS, Javascript, Fonts or even images.
+
+But, in this series we will be using [BootStrapCDN](https://www.bootstrapcdn.com/)
+
+So, open your file '/React/dev/js/app.js' and paste the following code in <head> .
+```
+link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+```
+Now the 'index.pug' file looks like -
+
+```
+doctype
+html
+    head
+        title Hackavan
+        link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+    body
+        div(id='app')
+        script(src="/static/bundle.min.js" type="text/javascript")
+
+```
+So , now let's throw in some new components. Let's add a Footer and a navbar to the page.
+
+Add a file 'Footer.js' in '/dev/js/components/' -
+
+```
+import React from "react"
+
+
+class Footer extends React.Component{
+
+    render(){
+        return (
+                <footer className="navbar navbar-fixed-bottom">
+                    <div className='container'>
+                    <div className='row'>
+                        <div className='col-sm-5'>
+                        <h3 className='lead'><strong>Information</strong> and <strong>Copyright</strong></h3>
+                        <p>Powered by <strong>Node.js</strong>, <strong>ElasticSearch</strong> and <strong>React</strong> with Redux architecture and server-side rendering.</p>
+                        <p>You may view the <a href='https://github.com/aayush-bhardwaj/FlashCard'>Source Code</a> behind this project on GitHub.</p>
+                        <p>© 2016 Hackavan.</p>
+                        </div>
+                        <div className='col-sm-7 hidden-xs'>
+                        <h3 className='lead'><strong><a href='https://www.youtube.com/channel/UCRV2ZWpnGf3M2PMm8irs3kg'>YouTube</a></strong> Subscribe Us.</h3>
+                        </div>
+                    </div>
+                    </div>
+                </footer>
+            );
+    }
+}
+
+export default Footer;
+```
+
+There is not much to be explained here .
+
+Now let's add a file 'navbar.js' in '/react/dev/js/components' -
+
+```
+import React from "react"
+
+
+class Navbar extends React.Component{
+
+    render(){
+        return (
+                <nav className='navbar navbar-default navbar-static-top'>
+                     <div className='navbar-header'>
+                        <p className='h4'>FlashCard Application</p>
+                     </div>
+                </nav>
+            );
+    }
+}
+
+export default Navbar;
+```
+
+Now we need to include these components in our entry file 'app.js' -
+
+Edit 'app.js' -
+```
+import React from "react"
+import {render} from "react-dom"
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
+
+render(
+    <div>
+        <Navbar />
+        <p className="h1">Hi from react hackavan</p>
+        <Footer />
+    </div>
+    ,document.getElementById("app")
+)
+```
+
+All , we did here is imported the classes Footer and Navbar we created.
+and,
+included them in our render() function.
+
+NOTE: the ReactDom.render() has to return only one parent element, So we have enclosed all our code within a <div> tag.
+
+Your node server and webpack are already running , So , go to your browser .
