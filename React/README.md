@@ -626,6 +626,11 @@ export default FlashCard;
 
 So, now we have the Application ready using react and Node.js . Great.
 
-In the coming appliation we will create the same application using Readux architecture and also talk about what we were missing in the present code.
+In the coming application we will create the same application using Readux architecture and also talk about what we were missing in the present code.
+
+Plus, we will also enhance our code to have features -
+
+1. View the Front and back of a FlashCard
+2. Edit, Delete , View each Flashcard.
 
 Cheers!
