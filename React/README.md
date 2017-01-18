@@ -433,3 +433,56 @@ Your node server and webpack are already running , So , go to your browser .
 
 
 ## ReactJS/Redux, NodeJs and ElasticSearch - 7 - Adding Component To create FlashCards.
+
+So, Now let's get to creating the skeleton for our Flashcard application .
+
+Create a new file 'FlashCard.js' in '/React/dev/js/components'
+
+```
+import React from "react"
+
+class FlashCard extends React.Component{
+
+    render(){
+        return (
+            <div className='container'>
+                <div className='panel panel-default'>
+                    <div className='panel-heading'>Add FlashCard</div>
+                    <div className='panel-body'>
+                        <form >
+                        <div className={'form-group '}>
+                            <label className='control-label'>FlashCard</label>
+                            <input type='text' className='form-control' ref='nameTextField'/>
+                        </div>
+                        <button type='submit' className='btn btn-primary'>Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    );
+    }
+}
+
+export default FlashCard;
+```
+
+And open file '/react/dev/js/app.js' and add the component for rendering.
+
+So, now the app.js file looks like -
+
+```
+import React from "react"
+import {render} from "react-dom"
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
+import FlashCard from './components/FlashCard'
+
+render(
+    <div>
+        <Navbar />
+        <FlashCard />
+        <Footer />
+    </div>
+    ,document.getElementById("app")
+)
+```
