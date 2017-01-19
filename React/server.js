@@ -1,9 +1,14 @@
-var http = require('http');
+var express = require('express');
+var app = express();
 
-var server = http.createServer(function(req,res){
-	console.log("Hey someone is here");
-	res.write("Hi hackavan");
-	res.end();
-});
+app.use('/static', express.static(__dirname + '/src/js'));
+app.set('view engine' ,'pug');
+app.set('views' , __dirname + '/src/views');
 
-server.listen(3000);
+app.get('*',function(req,res){
+    res.render('index');
+})
+
+app.listen(3000,function(){
+    console.log('listening on port 3000');
+})
