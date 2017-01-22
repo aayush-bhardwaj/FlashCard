@@ -311,3 +311,204 @@ All, done we have replicated our previous Flashcard application but not using re
 ![4](https://cloud.githubusercontent.com/assets/10152651/22182730/aff683a8-e0d2-11e6-8ca3-99391dc248e8.png)
 
 
+## STEP-4 : Let's create our reducers and store .
+
+1: Create file 'noteReducer.js' in '/reducers' .
+
+```
+const initialState = {
+    notes: [],
+    fetching: false,
+    saving: false,
+    error: null,
+}
+
+export default function reducer(state=initialState , action) {    
+    return state;
+}
+```
+
+2: Combine all the stores.
+
+Create file 'index.js' .
+
+```
+import { combineReducers } from "redux"
+import notes from './noteReducer'
+
+const allReducers = combineReducers({
+    notes : notes
+});
+
+export default allReducers;
+```
+
+3: Create the store .
+
+Edit 'store.js' :
+
+```
+import { applyMiddleware, createStore } from "redux"
+
+import logger from "redux-logger"
+import thunk from "redux-thunk"
+import promise from "redux-promise-middleware"
+
+import reducer from "./reducers"
+
+const middleware = applyMiddleware(promise(), thunk, logger())
+
+export default createStore(reducer, middleware)
+```
+
+4: Install the dependencies -
+
+```
+npm install redux-thunk  redux-logger redux-promise-middleware -ave
+```
+
+5: Provide the store to the components in file 'app.js'
+
+```
+import React from "react"
+import {render} from "react-dom"
+import App from './components/index'
+import { Provider } from "react-redux"
+import store from "./store"
+
+render(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    ,document.getElementById("app")
+)
+```
+
+## STEP-5 : Now let's add the actions to save our flashcard in elastic search.
+
+1: For component 'Flashcard' the event handler 'handleSubmit'  should raise an action to 'addNote' to the database.
+
+```
+handleSubmit(event) {
+        event.preventDefault();
+        this.props.addNote(this.state.value)
+    }
+```
+
+2: Now we need to define our action 'addNote' , create a file 'noteActions.js' in '/actions' .
+
+```
+import axios from "axios";
+
+export function addNote(text) {
+  return function(dispatch) {
+    axios.post("http://localhost:3000/addNote",{
+        text: text
+    })
+      .then((response) => {
+        dispatch({type: "ADD_NOTE", payload: response.data})
+      })
+      .catch((err) => {
+        dispatch({type: "ADD_NOTES_REJECTED", payload: err})
+      })
+  }
+}
+```
+
+Install axios :
+
+```
+npm install axios --save
+```
+
+3: Now 'noteAction' needs to be included in 'Flashcard.js'.
+
+import files in 'Flashcard.js' .
+
+```
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {addNote} from "../actions/noteActions"
+```
+
+4: Now bind the action with the component.
+
+Relace :
+
+```
+export default FlashCard;
+```
+with
+```
+function mapStateToProps(state) {
+    return {
+        notes: state.notes
+    };
+}
+
+function matchDispatchToProp(dispatch){
+    return bindActionCreators({addNote: addNote} , dispatch)
+}
+
+export default connect(mapStateToProps , matchDispatchToProp)(FlashCard);
+```
+
+
+## STEP-6 : Let's configure our server to listen to the HTTP 'POST'  request.
+
+1: Handle POST in  'server.js'
+ 
+ ```
+app.post('/addNote', function(req, res, next) {
+  var note = req.body.text;
+  console.log(note);
+  //add a document to an index
+  client.index({
+    index:"react",
+    type:"es",
+    body : {
+      "Note":note
+    }
+  },function(err,resp,status){
+      console.log(resp);
+      res.send({ message: note + ' has been added successfully!' });
+    });
+
+});
+```
+
+2: Handle elastic search settings in 'server.js'
+
+```
+var client = new elasticsearch.Client( {
+  host: "http://localhost:9200/"
+});
+
+
+  client.indices.create({
+  index: 'react'
+},function(err,resp,status) {
+  if(err) {
+    console.log("Console already exists.");
+  }
+  else {
+    console.log("create",resp);
+  }
+});
+```
+3: Configure 'body-parser'
+
+```
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+```
+
+4: Install all the dependencies .
+
+```
+npm install elasticsearch body-parser request --save
+```
+
+All, good now we can save the Notes to elastic search .
+
