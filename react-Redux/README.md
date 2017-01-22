@@ -80,5 +80,32 @@ app.listen(3000,function(){
 })
 ```
 
+Now, we need to install the dependency -
+
+```
+npm install express --save
+npm install pug --save
+```
+
+4: Let's get the index file ready.
+
+```
+doctype
+html
+    head
+        title Hackavan
+    body
+        div(id="app")
+        h1 Hello From Hackavan
+```
+
+5: All good run your node server .
+
+```
+nodemon server
+```
+
+
+
 
 
