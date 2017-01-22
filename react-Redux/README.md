@@ -142,6 +142,83 @@ npm install babel babel-cli babel-core babel-loader babel-preset-es2015 babel-pr
 
 7: Run 'webpack' in your terminal and in another terminal run your node server, we are good to go.
 
-## STEP-2 : 
+---
+---
+
+## STEP-2 : Let's configure our component.
+
+1: Let's add out first component 'Navbar.js'
+
+Create a file 'Navbar.js' in '/components'
+
+```
+import React from "react"
+
+
+class Navbar extends React.Component{
+
+    render(){
+        return (
+                <nav className='navbar navbar-default navbar-static-top'>
+                     <div className='navbar-header'>
+                        <p className='h4'>FlashCard Application</p>
+                     </div>
+                </nav>
+            );
+    }
+}
+
+export default Navbar;
+```
+2: Let's install the dependencies -
+
+```
+npm install react react-dom react-redux redux --save
+```
+
+3: So now we need to include it in our main component 'index.js' -
+
+```
+import React from 'react';
+import Navbar from './Navbar';
+
+
+const App = () => (
+    <div>
+        <Navbar />
+    </div>
+);
+
+export default App;
+```
+
+4:Now we need to call it from file 'app.js' where later we will also configure our store.
+
+```
+import React from "react"
+import {render} from "react-dom"
+import App from './components/index'
+
+render(
+            <App />
+    ,document.getElementById("app")
+)
+```
+
+5. Now the last step will be to include script 'bundle.min.js' in file 'index.pug'
+
+```
+doctype
+html
+    head
+        title Hackavan
+    body
+        div(id="app")
+        h1 Hello From Hackavan
+        link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+        script(src="/static/bundle.min.js" type="text/javascript")
+```
+
+Voila!
 
 
