@@ -48,6 +48,26 @@ app.post('/addNote', function(req, res, next) {
 
 });
 
+app.get('/notes', function(req, res, next) {
+  client.search({
+  index : "react",
+  type : "es",
+  body :{
+    query : {
+
+    }
+  }
+},function(err,resp,status){
+  if(err){
+    console.log("error",err)
+  }
+  else{
+    res.send(resp.hits.hits)
+  }
+});
+});
+
+
 app.listen(3000,function(){
     console.log('listening on port 3000');
 })

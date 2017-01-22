@@ -514,3 +514,97 @@ All, good now we can save the Notes to elastic search .
 
 ![5](https://cloud.githubusercontent.com/assets/10152651/22182990/daa0778e-e0d8-11e6-86aa-3effdfbee890.png)
 
+## STEP-6 : Now let's configure our reducers.
+
+1: File 'NoteReducer.js' looks like this :
+
+```
+const initialState = {
+    notes: [],
+    fetching: false,
+    saving: false,
+    error: null,
+}
+
+export default function reducer(state=initialState , action) {    
+    switch (action.type) {
+        case "ADD_NOTE": {
+          Object.assign({},state,state.saving=true);
+          break;
+        }
+  }
+    return state;
+}
+```
+
+2: Now let's configure the display settings .
+
+Add 'showFlashcards()' in 'Flashcard.js'
+
+```
+showFlashCards(){
+      this.props.fetchNote();
+
+      var namesList = this.props.notes.notes.map(function(name){
+              return <li className="list-group-item">{name}</li>;
+              })
+
+      return  <ul className="list-group">{ namesList }</ul>
+
+          }
+```
+3: Now let's configure the action 'fetchNotes' .
+
+Add to  'noteActions.js' :
+
+```
+export function fetchNote() {
+  return function(dispatch) {
+    axios.get("http://localhost:3000/notes")
+      .then((response) => {
+        dispatch({type: "FETCH_NOTES", payload: response.data})
+      })
+      .catch((err) => {
+        dispatch({type: "FETCH_TWEETS_REJECTED", payload: err})
+      })
+  }
+}
+```
+
+4: Let's handle the reducer to handle the states .
+
+Add a case in 'notereducer.js' when action.type is 'FETCH_NOTE'
+
+```
+case "FETCH_NOTES": {
+          action.payload.map((note) => {
+              state.notes = state.notes.concat(note._source.Note);
+          });          
+          break;
+        }
+```
+
+5: Now . let's handle the server.js to handle the GET request .
+
+```
+app.get('/notes', function(req, res, next) {
+  client.search({
+  index : "react",
+  type : "es",
+  body :{
+    query : {
+
+    }
+  }
+},function(err,resp,status){
+  if(err){
+    console.log("error",err)
+  }
+  else{
+    res.send(resp.hits.hits)
+  }
+});
+});
+```
+
+All good.
