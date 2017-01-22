@@ -308,4 +308,6 @@ export default App;
 
 All, done we have replicated our previous Flashcard application but not using reux architecture presently.
 
+![4](https://cloud.githubusercontent.com/assets/10152651/22182730/aff683a8-e0d2-11e6-8ca3-99391dc248e8.png)
+
 
