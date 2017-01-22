@@ -55,6 +55,7 @@ So, now we have our 'package.json' ready .
         --/views
             --index.pug
 ```
+![1](https://cloud.githubusercontent.com/assets/10152651/22181774/dcb863e4-e0b8-11e6-8448-1c21c11bc8d5.png)
 
 Cool, so we have our project structure ready.
 
