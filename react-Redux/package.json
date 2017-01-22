@@ -1,0 +1,19 @@
+{
+  "name": "flashcard",
+  "version": "1.0.0",
+  "description": "Youtube tutorial for react-redux",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aayush-bhardwaj/FlashCard.git"
+  },
+  "author": "Aayush",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aayush-bhardwaj/FlashCard/issues"
+  },
+  "homepage": "https://github.com/aayush-bhardwaj/FlashCard#readme"
+}
