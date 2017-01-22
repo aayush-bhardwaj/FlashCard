@@ -512,3 +512,5 @@ npm install elasticsearch body-parser request --save
 
 All, good now we can save the Notes to elastic search .
 
+![5](https://cloud.githubusercontent.com/assets/10152651/22182990/daa0778e-e0d8-11e6-86aa-3effdfbee890.png)
+
