@@ -1,6 +1,6 @@
 ## Now let's build the same FlashCard application using Redux architecture.
 
-## STEP-1
+## STEP-1 - Get Your Node server running and project structure ready.
 
 1: Get the project structure ready.
 
@@ -106,7 +106,42 @@ nodemon server
 ```
 ![2](https://cloud.githubusercontent.com/assets/10152651/22181818/56832b86-e0ba-11e6-91c7-8766d5088238.png)
 
+6: Configure webpack.
 
+```
+module.exports = {
+    entry : "./dev/js/app.js",
+    output :{
+        path : __dirname + "/src/js",
+        filename : "bundle.min.js"
+    },
+    module : {
+        loaders :[
+            {
+                exclude : /(node_modules)/,
+                loader : "babel",
+                query :{
+                    presets : ["es2015" , "react"]
+                }
+            }
+        ]
+    },
+    watch:true
+}
+```
+Install webpack :
 
+```
+npm install webpack --save
+```
+Install babel : 
+
+```
+npm install babel babel-cli babel-core babel-loader babel-preset-es2015 babel-preset-react --save
+```
+
+7: Run 'webpack' in your terminal and in another terminal run your node server, we are good to go.
+
+## STEP-2 : 
 
 
