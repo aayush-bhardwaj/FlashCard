@@ -2,7 +2,7 @@
 
 ## STEP-1
 
-1. Get the project structure ready.
+1: Get the project structure ready.
 
 ```
 npm init
@@ -32,7 +32,7 @@ So, now we have our 'package.json' ready .
 }
 ```
 
-2. Create few empty files in your root directory .
+2: Create few empty files in your root directory .
 
 ```
 --/react-Redux
@@ -59,7 +59,7 @@ So, now we have our 'package.json' ready .
 
 Cool, so we have our project structure ready.
 
-3. Now le's get our server ready as well.
+3: Now le's get our server ready as well.
 
 Paste the below code in 'server.js' , we are well aware of this file .
 
@@ -79,4 +79,6 @@ app.listen(3000,function(){
     console.log('listening on port 3000');
 })
 ```
+
+
 
