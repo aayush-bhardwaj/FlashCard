@@ -223,4 +223,89 @@ Voila!
 
 ![3](https://cloud.githubusercontent.com/assets/10152651/22182681/721dbd0e-e0d1-11e6-8c28-3f675724fde5.png)
 
+## STEP-3 : Configuring FlashCard component and defining our first action.
+
+1: Create file 'Flashcard.js' in '/components'.
+
+```
+import React from "react"
+
+class FlashCard extends React.Component{
+    constructor (props) {
+        super(props);
+        this.state = {
+            value :"",
+            flashcards: []
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        console.log(event.target.value);
+        this.setState({value: event.target.value});
+
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        var arr = this.state.flashcards;
+        arr.push(this.state.value);
+        this.setState({flashcards : arr})
+        console.log(this.state.flashcards)
+    }
+
+    showFlashCards(){                    
+        var namesList = this.state.flashcards.map(function(name){
+                return <li className="list-group-item">{name}</li>;
+                })
+
+        return  <ul className="list-group">{ namesList }</ul>  
+    }
+
+    render(){
+        return (
+            <div className='container'>
+                <div className='panel panel-default'>
+                    <div className='panel-heading'>Add FlashCard</div>
+                    <div className='panel-body'>
+                        <form onSubmit={this.handleSubmit}>
+                        <div className={'form-group '}>
+                            <label className='control-label'>FlashCard</label>
+                            <input type='text' className='form-control' ref='nameTextField' value={this.state.value} onChange={this.handleChange}/>                        
+
+                        </div>
+                        <button type='submit' className='btn btn-primary'>Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <hr/>
+                {this.showFlashCards()}
+            </div>
+    );
+    }
+}
+
+export default FlashCard;
+```
+
+Now include it in 'index.js'
+
+```
+import React from 'react';
+import Navbar from './Navbar';
+import Flashcard from './Flashcard'
+
+const App = () => (
+    <div>
+        <Navbar />
+        <Flashcard />
+    </div>
+);
+
+export default App;
+```
+
+All, done we have replicated our previous Flashcard application but not using reux architecture presently.
+
 
