@@ -13,6 +13,10 @@ class FlashCard extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    componentDidMount(){
+        this.props.fetchNote();   
+    }
     
 
     handleChange(event) {
@@ -24,11 +28,9 @@ class FlashCard extends React.Component{
     handleSubmit(event) {
         event.preventDefault();
         this.props.addNote(this.state.value)
-        this.setState(Object.assign({}, state, {value: "lol"}))
     }
 
     showFlashCards(){
-      this.props.fetchNote();
       var namesList = this.props.notes.notes.map(function(name){
               return <li className="list-group-item">{name}</li>;
               })

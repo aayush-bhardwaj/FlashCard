@@ -8,7 +8,8 @@ const initialState = {
 export default function reducer(state=initialState , action) {    
     switch (action.type) {
         case "ADD_NOTE": {
-          return Object.assign({},state,state.saving=true);
+          state.notes.concat(action.payload.note)
+          return Object.assign({},state,{saving:true});
           break;
         }
 
