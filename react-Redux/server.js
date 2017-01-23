@@ -43,7 +43,7 @@ app.post('/addNote', function(req, res, next) {
     }
   },function(err,resp,status){
       console.log(resp);
-      res.send({ message: note + ' has been added successfully!' });
+      res.send({ status : 200 , note : note });
     });
 
 });
@@ -62,6 +62,7 @@ app.get('/notes', function(req, res, next) {
     console.log("error",err)
   }
   else{
+    console.log("wow" + resp.hits.hits);
     res.send(resp.hits.hits)
   }
 });

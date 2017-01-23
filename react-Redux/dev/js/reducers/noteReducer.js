@@ -8,14 +8,17 @@ const initialState = {
 export default function reducer(state=initialState , action) {    
     switch (action.type) {
         case "ADD_NOTE": {
-          Object.assign({},state,state.saving=true);
+          return Object.assign({},state,state.saving=true);
           break;
         }
 
         case "FETCH_NOTES": {
+          var newNote = []
           action.payload.map((note) => {
-              state.notes = state.notes.concat(note._source.Note);
-          });          
+              newNote.push(note._source.Note)    ;
+          }); 
+          
+          return Object.assign({},state,{notes:newNote,saving:false});                   
           break;
         }
   }
